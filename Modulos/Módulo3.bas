@@ -19,6 +19,12 @@ Sub dropdown(txt As String)
                 ' Define o RowSource do controle txtItem
                 .Controls(txt).RowSource = "Dropdown!B2:B" & lastRow
                 
+            Case "txtItem2"
+                ' Encontra a última linha na coluna B
+                lastRow = ws.Cells(ws.Rows.Count, 2).End(xlUp).Row
+                ' Define o RowSource do controle txtItem
+                .Controls(txt).RowSource = "Dropdown!B2:B" & lastRow
+                
             Case "txtSubitem"
                 ' Encontra a última linha na coluna C
                 lastRow = ws.Cells(ws.Rows.Count, 3).End(xlUp).Row
@@ -31,6 +37,12 @@ Sub dropdown(txt As String)
                 ' Define o RowSource do controle txtMes
                 .Controls(txt).RowSource = "Dropdown!D14:D" & lastRow
                 
+            Case "txtData2"
+                ' Encontra a última linha na coluna D
+                lastRow = ws.Cells(ws.Rows.Count, 4).End(xlUp).Row
+                ' Define o RowSource do controle txtMes
+                .Controls(txt).RowSource = "Dropdown!D14:D" & lastRow
+
             Case "txtTipo"
                 ' Encontra a última linha na coluna E
                 lastRow = ws.Cells(ws.Rows.Count, 5).End(xlUp).Row

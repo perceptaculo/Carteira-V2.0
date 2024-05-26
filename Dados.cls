@@ -14,11 +14,13 @@ Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean
         lLinha = Target.Row 'pegar a linha q foi selecionada e armazenar em lLinha'
     End If
 
+    lsLimpar
     If lLinha > 0 Then
     lsPreencher lLinha
     End If
     
     UserForm1.Show 'mostrar o formulario'
     Cancel = True 'tirar o duplo click da celula'
+    UserForm1.txtRow.Value = lLinha
 End Sub
 

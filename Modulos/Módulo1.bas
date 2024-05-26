@@ -9,10 +9,10 @@ Public Sub lsLimpar()
     With UserForm1
         .txtItem = ""
         .txtSubitem = ""
-        .txtData = "mai/24"
+        .txtData = ""
         .txtCartao = ""
-        .txtTipo = "Ativo"
-        .txtQuem = "Leonel"
+        .txtTipo = ""
+        .txtQuem = ""
         .txtModalidade = ""
         .txtValor = ""
         .txtStatus = ""
@@ -22,28 +22,26 @@ End Sub
 'Já validado, está funcionando.'
 
 Public Sub lsCadastrar(ByVal lLinha As Long)
-With Dados
- .Cells(lLinha, 3).Value = UserForm1.txtItem
- .Cells(lLinha, 4).Value = UserForm1.txtSubitem
- .Cells(lLinha, 5).Value = UserForm1.txtData
- 
- 'Ta crashando quando nao recebe valor algum'
- If UserForm1.txtValor = "" Then
- .Cells(lLinha, 6).Value = CDbl(0)
- End If
- 
- If UserForm1.txtValor <> "" Then
- .Cells(lLinha, 6).Value = CDbl(Format(UserForm1.txtValor, "###0.00"))
- End If
- 
- 
- .Cells(lLinha, 7).Value = UserForm1.txtCartao
- .Cells(lLinha, 8).Value = UserForm1.txtModalidade
- .Cells(lLinha, 9).Value = UserForm1.txtTipo
- .Cells(lLinha, 10).Value = UserForm1.txtQuem
- .Cells(lLinha, 11).Value = UserForm1.txtStatus
- 
-End With
+
+    ' Jogar a linha nova em lLinha
+    With Dados
+        .Cells(lLinha, 3).Value = UserForm1.txtItem
+        .Cells(lLinha, 4).Value = UserForm1.txtSubitem
+        .Cells(lLinha, 5).Value = Format(UserForm1.txtData, "mmm/yy")
+
+        ' Tratar txtValor
+        If UserForm1.txtValor = "" Then
+            .Cells(lLinha, 6).Value = 0
+        Else
+            .Cells(lLinha, 6).Value = CDbl(Format(UserForm1.txtValor, "###0.00"))
+        End If
+
+        .Cells(lLinha, 7).Value = UserForm1.txtCartao
+        .Cells(lLinha, 8).Value = UserForm1.txtModalidade
+        .Cells(lLinha, 9).Value = UserForm1.txtTipo
+        .Cells(lLinha, 10).Value = UserForm1.txtQuem
+        .Cells(lLinha, 11).Value = UserForm1.txtStatus
+    End With
 End Sub
 
 Public Sub lsPreencher(ByVal lLinha As Long)
